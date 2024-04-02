@@ -30,3 +30,8 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 10
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
