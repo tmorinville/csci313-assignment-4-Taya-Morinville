@@ -23,7 +23,7 @@
               <li><a href="{% url 'index' %}">Home</a></li>
               <li><a href="{% url 'books' %}">All books</a></li>
               <li><a href="">All authors</a></li>
-              {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
      <li>User: {{ user.get_username }}</li>
      <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
      <li>
@@ -35,6 +35,18 @@
    {% else %}
      <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
    {% endif %}
+   {% if user.is_staff %}
+
+   <hr>
+<ul class="sidebar-nav">
+<li>Staff</li>
+   {% comment %} <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li> {% endcomment %}
+{% if perms.catalog.add_author %}
+   <li><a href="{% url 'author-create' %}">Create author</a></li>
+{% endif %}
+</ul>
+{% endif %}
+
             </ul>
           {% endblock %}
         </div>
