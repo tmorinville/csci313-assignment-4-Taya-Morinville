@@ -8,7 +8,7 @@
     <ul>
 
       {% for bookinst in bookinstance_list %} 
-      <div class="container border" style="margin: 5px;">
+      <div class="container border border-dark" style="margin: 5px;">
         <h2 class="{% if bookinst.is_overdue %}text-danger{% endif %}">{{ bookinst.book.title }}</h2>
         <p><strong>Due Back Date:</strong> {{ bookinst.due_back }}</p>
         {% if user.is_staff %}

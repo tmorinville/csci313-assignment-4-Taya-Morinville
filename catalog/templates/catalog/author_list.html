@@ -6,7 +6,7 @@
 
 {% if author_list %}
   {% for author in author_list %}
-    <div class="container border" style="margin: 5px;">
+    <div class="container border border-dark" style="margin: 5px;">
       <h2>{{ author.first_name }} {{ author.last_name }}</h2>
       <p>{{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %}</p>
       <a
