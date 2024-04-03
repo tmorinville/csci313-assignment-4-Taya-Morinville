@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>All Borrowed Books</h1>
+    <p>The book instances with red font color for the title are overdue.</p>
+
+    {% if bookinstance_list %}
+    <ul>
+
+      {% for bookinst in bookinstance_list %} 
+      <div class="container border" style="margin: 5px;">
+        <h2 class="{% if bookinst.is_overdue %}text-danger{% endif %}">{{ bookinst.book.title }}</h2>
+        <p><strong>Due Back Date:</strong> {{ bookinst.due_back }}</p>
+        {% if user.is_staff %}
+            <p><strong>Borrower:</strong> {{ bookinst.borrower }}</p>
+        {% endif %}
+        {% if perms.catalog.can_mark_returned %}
+        <a
+        style="margin-bottom: 10px"
+        class="btn btn-primary"
+        href="{% url 'renew-book-librarian' bookinst.id %}"
+        >Renew
+      </a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>No books borrowed, nothing to list.</p>
+    {% endif %}       
+{% endblock %}

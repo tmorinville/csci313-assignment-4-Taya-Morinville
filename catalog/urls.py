@@ -22,3 +22,8 @@ urlpatterns += [
     path('author/<int:pk>/update/', views.AuthorUpdate.as_view(), name='author-update'),
     path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
 ]
+
+# Added for challenge in part 8
+urlpatterns += [
+    path('all-borrowed/', views.AllBorrowed.as_view(), name='all-borrowed')
+]
