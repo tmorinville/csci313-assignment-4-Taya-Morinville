@@ -1,16 +1,20 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1 class="text-info">Book List</h1>
+  <h1 style="text-align: center;">Book List</h1>
   {% if book_list %}
-    <ul>
       {% for book in book_list %}
-      <li>
-        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
-        ({{book.author}})
-      </li>
+        <div class="container border" style="margin: 5px;">
+          <h2>{{ book.title }}</h2>
+          <p><strong>Author:</strong> {{ book.author }}</p>
+          <a
+          style="margin-bottom: 10px"
+          class="btn btn-primary"
+          href="{{ book.get_absolute_url }}"
+          >View Book Details
+        </a>
+        </div>
       {% endfor %}
-    </ul>
   {% else %}
     <p>There are no books in the library.</p>
   {% endif %}
