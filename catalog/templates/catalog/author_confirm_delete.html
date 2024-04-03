@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<h1>Delete Author: {{ author }}</h1>
+<h1 class="text-danger">Delete Author:</h1>
+<h2>{{ author }}</h2>
 
 {% if author.book_set.all %}
 
